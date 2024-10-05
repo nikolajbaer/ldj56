@@ -320,4 +320,5 @@ void fragment() {
     // Set final color and alpha
     ALBEDO = final_color.rgb;
     ALPHA = final_color.a;
+	SPECULAR = 0.01;
 }
