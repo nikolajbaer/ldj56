@@ -31,5 +31,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0389881, 0.939647, 0.001798
 shape = SubResource("BoxShape3D_nv88b")
 
 [node name="EggStart" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.438257, 1.21599, 0)
 
 [connection signal="body_entered" from="catch_area" to="." method="_on_catch_area_body_entered"]
