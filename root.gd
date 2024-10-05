@@ -4,7 +4,7 @@ var Egg = preload("res://egg.tscn")
 var Creature = preload("res://creature.tscn")
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	$AnimationPlayer.play("boat_enter")
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,3 +37,8 @@ func _on_chomp():
 			#Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		#elif Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 			#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "boat_enter":
+		$AnimationPlayer.play("boat_rock",-3)
