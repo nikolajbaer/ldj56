@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://trampoline.gd" id="1_p0ijf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fw8ri"]
-bounce = 0.7
+bounce = 1.0
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_hacoc"]
 top_radius = 1.0
@@ -19,13 +19,9 @@ physics_material_override = SubResource("PhysicsMaterial_fw8ri")
 script = ExtResource("1_p0ijf")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 mesh = SubResource("CylinderMesh_hacoc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CylinderShape3D_1ooxa")
-
-[node name="RayCast3D" type="RayCast3D" parent="."]
-target_position = Vector3(0, -10, 0)
-collision_mask = 2

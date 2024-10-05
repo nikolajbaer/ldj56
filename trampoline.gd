@@ -9,7 +9,7 @@ const MAX_TILT_ANGLE = 30.0
 
 var y_offset
 
-@onready var raycast = $RayCast3D
+#@onready var raycast = $RayCast3D
 
 func _ready():
 	y_offset = position.y
@@ -35,8 +35,8 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, speed)
 
 	var new_pos = position + velocity * delta
-	if raycast.is_colliding():
-		new_pos.y = raycast.get_collision_point().y + y_offset
+	#if raycast.is_colliding():
+		#new_pos.y = raycast.get_collision_point().y + y_offset
 	#if new_pos.length() > MAX_DIST_FROM_ORIGIN:
 		#new_pos = new_pos.normalized() * (MAX_DIST_FROM_ORIGIN - 0.0001)
 	

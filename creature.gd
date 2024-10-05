@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-signal chomp
+signal chomp(position)
 
 const SPEED = 1.0
 const JUMP_VELOCITY = 4.5

@@ -1,4 +1,5 @@
 extends RigidBody3D
+class_name Egg
 
 signal hit_ground
 
@@ -20,3 +21,7 @@ func _on_body_entered(body: Node) -> void:
 		var ground_pos = Vector3(position.x,position.y,position.z)
 		hit_ground.emit(ground_pos)
 		self.queue_free()
+
+func stow():
+	self.freeze = true
+	rotation = Vector3(0,0,0)

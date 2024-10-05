@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://br5v1vnwcl18k"]
+
+[ext_resource type="Script" path="res://boat.gd" id="1_7ldt4"]
+[ext_resource type="ArrayMesh" uid="uid://c5wr7egtg4xvo" path="res://assets/boat.obj" id="2_mwobb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ad6o0"]
+albedo_color = Color(0.29387, 0.210938, 0.0488153, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_iohvb"]
+points = PackedVector3Array(2.06057, -0.233325, 1.09086, -1.74168, 0.286692, -1.2824, -1.7487, 1.22448, -1.29074, -5.08363, 1.2482, 0.189207, 3.72943, 1.2482, 1.0154, 3.59183, 0.284413, -1.05014, -3.23129, -0.521217, 0.049832, -3.15469, 1.2482, 1.15319, 3.80182, -0.46811, -0.390457, 3.59054, 1.2482, -1.04983, -2.87593, -0.229053, 0.953287, 2.60725, -0.46811, -1.13694, -3.23995, -0.254018, -0.894284, -5.45536, 1.02482, -0.241049, 2.45852, -0.61746, 0.505159, 2.60088, 0.284975, 1.28066, 2.47709, 1.24462, -1.32016, 3.65308, -0.46811, 0.505159, -3.13889, 1.24249, -1.18015, -2.14329, 0.286564, 1.25039, 2.6183, 1.24586, 1.28756, -4.15513, -0.133917, 0.330676, -3.07336, 0.153479, 1.11477, 2.46052, 0.285068, -1.31332, 2.90566, -0.61746, -0.241049, -4.12015, -0.129018, -0.361605, 3.66036, 0.28331, 1.0323, -2.9847, -0.352259, 0.816224, 3.72943, 1.2482, -0.912048, -3.01506, 0.158336, -1.12165, -2.15277, 1.22604, 1.25859, 3.79439, 0.842111, 1.03063)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nv88b"]
+size = Vector3(1.9325, 1, 6.16656)
+
+[node name="Boat" type="AnimatableBody3D"]
+script = ExtResource("1_7ldt4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+mesh = ExtResource("2_mwobb")
+surface_material_override/0 = SubResource("StandardMaterial3D_ad6o0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_iohvb")
+
+[node name="catch_area" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="catch_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0389881, 0.939647, 0.00179827)
+shape = SubResource("BoxShape3D_nv88b")
+
+[node name="EggStart" type="Marker3D" parent="."]
+
+[connection signal="body_entered" from="catch_area" to="." method="_on_catch_area_body_entered"]
