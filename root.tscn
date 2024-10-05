@@ -31,6 +31,7 @@ fov = 20.0
 
 [node name="ground" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+collision_layer = 3
 
 [node name="Lopoly-island" type="MeshInstance3D" parent="ground"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.556698, -2.36944, -0.289802)
