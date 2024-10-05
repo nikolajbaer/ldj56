@@ -14,3 +14,7 @@ func _on_catch_area_body_entered(body: Node3D) -> void:
 		if egg_count == 12:
 			full.emit()
 		
+func clear_cargo():
+	for child in get_children():
+		if child is Egg:
+			child.queue_free()
