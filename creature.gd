@@ -10,6 +10,11 @@ func _ready():
 	$AnimationPlayer.play()
 
 func _physics_process(delta: float) -> void:
+	#under water
+	if position.y < -2:
+		print("creature ",name," sank")
+		self.queue_free()
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -20,13 +25,15 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	#var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var input_dir = Vector3(0,0,0)
+	var dir = Vector3(0,0,0)
+	var target_same_plane = Vector3(target.position.x,self.position.y,target.position.z)
 	if target:
-		var dist_to = target.position - self.position
-		if dist_to.length() > 1:
-			input_dir = dist_to
-	if input_dir.length():
-		var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		var dist_to = target_same_plane - self.position
+		if dist_to.length() > 5:
+			dir = dist_to
+			self.look_at(target_same_plane)
+	if dir.length():
+		var direction := (transform.basis * Vector3(dir.x, 0, dir.z)).normalized()
 		if direction:
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED

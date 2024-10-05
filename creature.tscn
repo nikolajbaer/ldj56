@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://fb3rqk1wep5c" path="res://creature_material.tres" id="1_pjb8w"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_nv7pj"]
-size = Vector3(1, 0.5, 1)
+size = Vector3(0.4, 0.2, 0.4)
 
 [sub_resource type="Animation" id="Animation_qndg8"]
 length = 0.001
@@ -44,20 +44,21 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_udhy0"]
+size = Vector3(0.4, 0.4, 0.4)
 
 [node name="creature" type="CharacterBody3D"]
 script = ExtResource("1_0q8en")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 mesh = SubResource("BoxMesh_nv7pj")
 surface_material_override/0 = ExtResource("1_pjb8w")
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, -0.2)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.269884, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0.2)
 mesh = SubResource("BoxMesh_nv7pj")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("1_pjb8w")
@@ -69,5 +70,5 @@ libraries = {
 }
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 shape = SubResource("BoxShape3D_udhy0")
