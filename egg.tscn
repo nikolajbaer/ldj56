@@ -11,6 +11,7 @@ radius = 0.25
 height = 0.5
 
 [node name="egg" type="RigidBody3D"]
+continuous_cd = true
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_gmwx7")

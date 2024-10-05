@@ -17,6 +17,6 @@ func _on_body_entered(body: Node) -> void:
 	print("Egg hit ",body.name," at ",last_vel)
 
 	if body.name == "ground" and last_vel > CRACK_SPEED:
-		var ground_pos = Vector3(position.x,0.55,position.z)
+		var ground_pos = Vector3(position.x,position.y,position.z)
 		hit_ground.emit(ground_pos)
 		self.queue_free()
