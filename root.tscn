@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://dyberu81x7rr3"]
+
+[ext_resource type="PackedScene" uid="uid://bjt3arw5lu6dn" path="res://trampoline.tscn" id="1_jhr10"]
+[ext_resource type="Script" path="res://root.gd" id="1_pdsvo"]
+[ext_resource type="PackedScene" uid="uid://v06kdx7n0erv" path="res://creature.tscn" id="3_cnkdg"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_2wr1d"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qu18j"]
+albedo_color = Color(0.132069, 0.405414, 0.230901, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_v4lv7"]
+material = SubResource("StandardMaterial3D_qu18j")
+size = Vector2(1000, 1000)
+
+[node name="root" type="Node3D"]
+script = ExtResource("1_pdsvo")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 0, 20, 24)
+fov = 20.0
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_2wr1d")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_v4lv7")
+skeleton = NodePath("../..")
+
+[node name="trampoline" parent="." instance=ExtResource("1_jhr10")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 4.59015, 0)
+shadow_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 4.0
+autostart = true
+
+[node name="creature" parent="." instance=ExtResource("3_cnkdg")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 10, 0, 0)
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

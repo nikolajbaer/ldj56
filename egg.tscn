@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://d33ql3w3sbg3g"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_i2nj4"]
+radius = 0.25
+height = 0.7
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_i7fo5"]
+radius = 0.25
+height = 0.5
+
+[node name="egg" type="RigidBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_i2nj4")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_i7fo5")

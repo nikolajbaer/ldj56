@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bjt3arw5lu6dn"]
+
+[ext_resource type="Script" path="res://trampoline.gd" id="1_p0ijf"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fw8ri"]
+bounce = 0.5
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hacoc"]
+top_radius = 1.0
+bottom_radius = 1.0
+height = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1ooxa"]
+height = 0.1
+radius = 1.0
+
+[node name="trampoline" type="AnimatableBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_fw8ri")
+script = ExtResource("1_p0ijf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+mesh = SubResource("CylinderMesh_hacoc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CylinderShape3D_1ooxa")
