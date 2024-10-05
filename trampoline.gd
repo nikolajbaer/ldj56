@@ -5,7 +5,7 @@ var velocity = Vector3(0,0,0)
 const MAX_DIST_FROM_ORIGIN = 6.5
 var weighed_down = 0
 const WEIGHT_PENALTY = 0.5
-const TILT_FACTOR = 5
+const MAX_TILT_ANGLE = 30.0
 
 var y_offset
 
@@ -19,9 +19,7 @@ func _physics_process(delta: float) -> void:
 	var mouse_position = get_viewport().get_mouse_position()
 	var screen_size = get_viewport().size
 	var mouse_pos = (mouse_position / Vector2(screen_size)) * 2.0 - Vector2(1, 1)
-	var look_target = Vector3(mouse_pos.x,0,mouse_pos.y) * TILT_FACTOR
-	#look_target.y = position.y + 5
-	#look_at(look_target,Vector3.FORWARD)
+
 	var tilt_quat = get_tilt(mouse_pos)
 	
 	var speed = max(SPEED - (weighed_down * WEIGHT_PENALTY),1)
@@ -43,9 +41,6 @@ func _physics_process(delta: float) -> void:
 		#new_pos = new_pos.normalized() * (MAX_DIST_FROM_ORIGIN - 0.0001)
 	
 	transform = Transform3D(Basis(tilt_quat),new_pos)
-
-# Maximum tilt angle in degrees
-const MAX_TILT_ANGLE = 15.0
 
 # Function to tilt the platform based on a Vector2 input
 func get_tilt(tilt: Vector2):
