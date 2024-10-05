@@ -23,4 +23,9 @@ func _on_egg_hit(pos:Vector3):
 	var critter =Creature.instantiate()
 	critter.position = pos
 	critter.target = $trampoline
+	critter.target_radius = 1
+	critter.connect("chomp",_on_chomp)
 	add_child(critter)
+	
+func _on_chomp():
+	$trampoline.weighed_down += 1
