@@ -39,8 +39,8 @@ func _physics_process(delta: float) -> void:
 	var new_pos = position + velocity * delta
 	if raycast.is_colliding():
 		new_pos.y = raycast.get_collision_point().y + y_offset
-	if new_pos.length() > MAX_DIST_FROM_ORIGIN:
-		new_pos = new_pos.normalized() * (MAX_DIST_FROM_ORIGIN - 0.0001)
+	#if new_pos.length() > MAX_DIST_FROM_ORIGIN:
+		#new_pos = new_pos.normalized() * (MAX_DIST_FROM_ORIGIN - 0.0001)
 	
 	transform = Transform3D(Basis(tilt_quat),new_pos)
 
