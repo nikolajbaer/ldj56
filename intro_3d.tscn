@@ -1,0 +1,118 @@
+[gd_scene load_steps=14 format=3 uid="uid://bvnnuxn7bhv6r"]
+
+[ext_resource type="Script" path="res://intro_3d.gd" id="1_adj2y"]
+[ext_resource type="PackedScene" uid="uid://cfllpbprcrwxw" path="res://ground.tscn" id="1_bkpe4"]
+[ext_resource type="PackedScene" uid="uid://bjt3arw5lu6dn" path="res://trampoline.tscn" id="2_f5350"]
+[ext_resource type="Shader" path="res://ocean.gdshader" id="3_3saqr"]
+[ext_resource type="PackedScene" uid="uid://br5v1vnwcl18k" path="res://boat.tscn" id="4_4ekjq"]
+[ext_resource type="PackedScene" uid="uid://b2n5w8k25spxt" path="res://dock.tscn" id="5_7mi8w"]
+
+[sub_resource type="Environment" id="Environment_5w55g"]
+ambient_light_color = Color(0.958918, 0.937631, 0.741529, 1)
+ambient_light_energy = 2.78
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c6dhh"]
+render_priority = 0
+shader = ExtResource("3_3saqr")
+shader_parameter/WATER_COL = Color(0.04, 0.38, 0.88, 1)
+shader_parameter/WATER2_COL = Color(0.023312, 0.285427, 0.649306, 1)
+shader_parameter/FOAM_COL = Color(0.751656, 0.93478, 0.999009, 1)
+shader_parameter/distortion_speed = 1.0
+shader_parameter/tile = Vector2(700, 600)
+shader_parameter/wave_speed = 1.2
+shader_parameter/wave_amplitude = 0.27
+shader_parameter/wave_frequency = 3.38
+shader_parameter/time_offset = 3.42
+shader_parameter/water_size = Vector2(1280, 1280)
+shader_parameter/water_transparency = 1.43
+shader_parameter/water_depth_factor = 7.34
+shader_parameter/foam_width = 1.12
+shader_parameter/foam_edge_softness = 0.05
+shader_parameter/foam_smoothness = 0.03
+shader_parameter/foam_distortion_speed = 0.5
+shader_parameter/foam_distortion_amount = 0.15
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_3n580"]
+size = Vector2(1000, 1000)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1gx01"]
+albedo_color = Color(0.124231, 0.266051, 0.518849, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7uih"]
+albedo_color = Color(0.220134, 0.236158, 0.646493, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_2tj4k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cldfp"]
+font = SubResource("SystemFont_2tj4k")
+font_size = 64
+font_color = Color(0.96249, 0.954828, 1.54018e-06, 1)
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
+
+[node name="intro3d" type="Node3D"]
+script = ExtResource("1_adj2y")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.766044, 0.642788, 0, -0.642788, 0.766044, 2, 30, 35)
+environment = SubResource("Environment_5w55g")
+fov = 20.0
+
+[node name="ground" parent="." instance=ExtResource("1_bkpe4")]
+
+[node name="trampoline" parent="." instance=ExtResource("2_f5350")]
+transform = Transform3D(0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0, 1, 2, 0.5, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6.9683, 0)
+shadow_enabled = true
+
+[node name="ocean" type="MeshInstance3D" parent="."]
+visible = false
+material_override = SubResource("ShaderMaterial_c6dhh")
+mesh = SubResource("PlaneMesh_3n580")
+surface_material_override/0 = SubResource("StandardMaterial3D_1gx01")
+
+[node name="ocean_perf" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_3n580")
+surface_material_override/0 = SubResource("StandardMaterial3D_o7uih")
+
+[node name="Boat" parent="." instance=ExtResource("4_4ekjq")]
+transform = Transform3D(0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0, 0, 1, 12, 0, 0)
+
+[node name="Dock" parent="." instance=ExtResource("5_7mi8w")]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBox" type="VBoxContainer" parent="Control"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="VBoxContainer" parent="Control/VBox/CenterContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="RichTextLabel" type="Label" parent="Control/VBox/CenterContainer/Panel"]
+layout_mode = 2
+text = "Egg Harvest"
+label_settings = SubResource("LabelSettings_cldfp")
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="Control/VBox/CenterContainer/Panel"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+text = "Play Game!"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

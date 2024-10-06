@@ -3,7 +3,7 @@ extends AnimatableBody3D
 signal full
 signal egg_collected
 
-const FULL = 1
+const FULL = 12
 const EGG_WIDTH=0.6
 var egg_count = 0
 

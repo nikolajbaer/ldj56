@@ -7,6 +7,8 @@ var weighed_down = 0
 const WEIGHT_PENALTY = 0.5
 const MAX_TILT_ANGLE = 30.0
 
+var active = true
+
 var y_offset
 
 #@onready var raycast = $RayCast3D
@@ -15,7 +17,7 @@ func _ready():
 	y_offset = position.y
 
 func _physics_process(delta: float) -> void:
-	
+	if not active: return
 	var mouse_position = get_viewport().get_mouse_position()
 	var screen_size = get_viewport().size
 	var mouse_pos = (mouse_position / Vector2(screen_size)) * 2.0 - Vector2(1, 1)

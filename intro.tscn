@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" path="res://intro.gd" id="1_msqk3"]
 
-[sub_resource type="SystemFont" id="SystemFont_2tj4k"]
+[sub_resource type="SystemFont" id="SystemFont_nhqwc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_2we22"]
-font = SubResource("SystemFont_2tj4k")
+font = SubResource("SystemFont_nhqwc")
 font_size = 64
 font_color = Color(0.96249, 0.954828, 1.54018e-06, 1)
 outline_size = 12
