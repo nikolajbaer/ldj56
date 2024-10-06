@@ -16,7 +16,7 @@ func _physics_process(delta: float) -> void:
 		self.queue_free()
 
 func _on_body_entered(body: Node) -> void:
-	print("Egg hit ",body.name," at ",last_vel)
+	#print("Egg hit ",body.name," at ",last_vel)
 
 	if body.name == "ground" and last_vel > CRACK_SPEED and not crack_triggered:
 		timer.start()

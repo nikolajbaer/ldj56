@@ -1,7 +1,9 @@
 extends AnimatableBody3D
 
 signal full
+signal egg_collected
 
+const FULL = 1
 const EGG_WIDTH=0.6
 var egg_count = 0
 
@@ -11,10 +13,12 @@ func _on_catch_area_body_entered(body: Node3D) -> void:
 		body.reparent(self)
 		body.position = $EggStart.position + Vector3(egg_count%2 * EGG_WIDTH,0,floor(egg_count/2)*EGG_WIDTH)
 		egg_count += 1
-		if egg_count == 12:
+		egg_collected.emit()
+		if egg_count == FULL:
 			full.emit()
 		
 func clear_cargo():
 	for child in get_children():
 		if child is Egg:
 			child.queue_free()
+	egg_count = 0

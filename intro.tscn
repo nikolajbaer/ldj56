@@ -1,0 +1,37 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm32og71noj32"]
+
+[ext_resource type="Script" path="res://intro.gd" id="1_msqk3"]
+
+[node name="intro" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_msqk3")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="CenterContainer" type="CenterContainer" parent="VBox"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="VBoxContainer" parent="VBox/CenterContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBox/CenterContainer/Panel"]
+layout_mode = 2
+text = "Egg Game
+"
+fit_content = true
+
+[node name="Button" type="Button" parent="VBox/CenterContainer/Panel"]
+layout_mode = 2
+text = "Play Game!"
+
+[connection signal="pressed" from="VBox/CenterContainer/Panel/Button" to="." method="_on_button_pressed"]
