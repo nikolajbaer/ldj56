@@ -55,6 +55,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 func _on_full():
 	$AnimationPlayer.play("boat_exit",-2)
 	game_active = false
+	$HUD/CenterContainer/WinLabel.visible = true
 
 func _on_boat_egg_collected() -> void:
 	$HUD/RichTextLabel.text = "%d / %d eggs collected" % [$Boat.egg_count,$Boat.FULL]

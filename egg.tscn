@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://d33ql3w3sbg3g"]
+[gd_scene load_steps=6 format=3 uid="uid://d33ql3w3sbg3g"]
 
 [ext_resource type="Script" path="res://egg.gd" id="1_gmwx7"]
 [ext_resource type="AudioStream" uid="uid://b5w6k1dn7kdno" path="res://assets/bounce.wav" id="2_ih05g"]
-[ext_resource type="AudioStream" uid="uid://bjkgsgwk12vde" path="res://assets/water-bloop.mp3" id="3_cyeya"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_41164"]
 albedo_color = Color(0.993089, 0.882245, 0.581316, 1)
@@ -36,9 +35,5 @@ one_shot = true
 [node name="Bounce" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ih05g")
 
-[node name="Water-bloop" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_cyeya")
-
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="finished" from="Water-bloop" to="." method="_on_waterbloop_finished"]

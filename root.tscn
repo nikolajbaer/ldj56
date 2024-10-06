@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" path="res://ground.tscn" id="2_et0ms"]
 [ext_resource type="Shader" path="res://ocean.gdshader" id="4_d3civ"]
 [ext_resource type="PackedScene" uid="uid://br5v1vnwcl18k" path="res://boat.tscn" id="4_wum8f"]
-[ext_resource type="AudioStream" uid="uid://gi75mnvrqww8" path="res://assets/music.ogg" id="6_70vi1"]
-[ext_resource type="PackedScene" path="res://dock.tscn" id="6_eexqw"]
+[ext_resource type="PackedScene" uid="uid://b2n5w8k25spxt" path="res://dock.tscn" id="6_eexqw"]
+[ext_resource type="AudioStream" uid="uid://cagfhfi3xqqwk" path="res://assets/ld56-loop1.mp3" id="7_gpfeo"]
 
 [sub_resource type="Environment" id="Environment_v7ao4"]
 ambient_light_color = Color(0.958918, 0.937631, 0.741529, 1)
@@ -241,7 +241,7 @@ layout_mode = 2
 text = "Start!"
 
 [node name="music" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("6_70vi1")
+stream = ExtResource("7_gpfeo")
 volume_db = -1.0
 autoplay = true
 parameters/looping = true
