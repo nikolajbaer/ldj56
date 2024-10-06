@@ -211,11 +211,13 @@ mesh = SubResource("BoxMesh_fylyy")
 
 [node name="HUD" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="HUD"]
+[node name="RichTextLabel" type="Label" parent="HUD"]
 layout_mode = 0
 offset_left = 4.0
 offset_top = 4.0
@@ -223,6 +225,51 @@ offset_right = 213.0
 offset_bottom = 38.0
 text = "0 / 12 eggs collected"
 
+[node name="CenterContainer" type="CenterContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WinLabel" type="Label" parent="HUD/CenterContainer"]
+visible = false
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "EGGS COLLECTED!
+"
+horizontal_alignment = 1
+
+[node name="Panel" type="Panel" parent="HUD/CenterContainer"]
+layout_mode = 2
+
+[node name="StartContainer" type="VBoxContainer" parent="HUD/CenterContainer/Panel"]
+layout_mode = 2
+offset_left = -404.0
+offset_top = -146.0
+offset_right = 403.0
+offset_bottom = 146.0
+
+[node name="StartLabel" type="Label" parent="HUD/CenterContainer/Panel/StartContainer"]
+layout_mode = 2
+text = "Gnomes need eggs to keep their beards shiny! 
+
+Collect them as they drop to the island by bouncing and scooting them with your trampoline to the boat!
+
+Watch out, if the eggs hit the sand too hard they will hatch little Tiny Creatures.
+They want to chomp you and slow you down!
+
+Get to a dozen eggs and we can sail away!
+
+Use WASD or arrow keys to move and your mouse/touch to angle the trampoline."
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="HUD/CenterContainer/Panel/StartContainer"]
+layout_mode = 2
+text = "Start!"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="egg_collected" from="Boat" to="." method="_on_boat_egg_collected"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="pressed" from="HUD/CenterContainer/Panel/StartContainer/Button" to="." method="_on_button_pressed"]

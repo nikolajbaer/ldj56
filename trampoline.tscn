@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://trampoline.gd" id="1_p0ijf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_fw8ri"]
-bounce = 0.5
+bounce = 0.6
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_hacoc"]
 top_radius = 1.0

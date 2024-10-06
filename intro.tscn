@@ -1,6 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dm32og71noj32"]
+[gd_scene load_steps=4 format=3 uid="uid://dm32og71noj32"]
 
 [ext_resource type="Script" path="res://intro.gd" id="1_msqk3"]
+
+[sub_resource type="SystemFont" id="SystemFont_2tj4k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2we22"]
+font = SubResource("SystemFont_2tj4k")
+font_size = 64
+font_color = Color(0.96249, 0.954828, 1.54018e-06, 1)
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
 
 [node name="intro" type="Control"]
 layout_mode = 3
@@ -24,13 +33,15 @@ size_flags_vertical = 3
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBox/CenterContainer/Panel"]
+[node name="RichTextLabel" type="Label" parent="VBox/CenterContainer/Panel"]
 layout_mode = 2
-text = "Egg Game
+text = "Gnomes Collect Eggs
 "
-fit_content = true
+label_settings = SubResource("LabelSettings_2we22")
+horizontal_alignment = 1
 
 [node name="Button" type="Button" parent="VBox/CenterContainer/Panel"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "Play Game!"
 

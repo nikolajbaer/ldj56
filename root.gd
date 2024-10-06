@@ -10,7 +10,7 @@ func _ready() -> void:
 	_on_boat_egg_collected()
 	# Capturing the mouse doesn't work well with tilt right now
 	#Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	game_active = true
+	game_active = false
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -58,3 +58,8 @@ func _on_full():
 
 func _on_boat_egg_collected() -> void:
 	$HUD/RichTextLabel.text = "%d / %d eggs collected" % [$Boat.egg_count,$Boat.FULL]
+
+
+func _on_button_pressed() -> void:
+	game_active = true
+	$HUD/CenterContainer/Panel/StartContainer.visible = false
