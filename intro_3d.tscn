@@ -114,5 +114,5 @@ layout_mode = 2
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0
 
-[connection signal="pressed" from="Control/VBox/CenterContainer/Panel/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/VBox/VBoxContainer/CenterContainer/Panel/Button" to="." method="_on_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
