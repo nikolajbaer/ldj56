@@ -19,3 +19,7 @@ func _on_timer_timeout() -> void:
 	egg.position.x = 2.2
 	egg.position.y = 20
 	add_child(egg)
+
+
+func _on_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://root.tscn")

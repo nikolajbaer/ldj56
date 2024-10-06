@@ -25,6 +25,7 @@ func _on_body_entered(body: Node) -> void:
 func stow():
 	self.freeze = true
 	rotation = Vector3(0,0,0)
+	$Timer.stop()
 
 func _on_timer_timeout() -> void:
 	var ground_pos = Vector3(position.x,position.y,position.z)

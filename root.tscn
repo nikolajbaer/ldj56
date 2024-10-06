@@ -243,6 +243,7 @@ text = "Start!"
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_70vi1")
 autoplay = true
+parameters/looping = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="egg_collected" from="Boat" to="." method="_on_boat_egg_collected"]
