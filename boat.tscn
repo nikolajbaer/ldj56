@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://br5v1vnwcl18k"]
+[gd_scene load_steps=8 format=3 uid="uid://br5v1vnwcl18k"]
 
 [ext_resource type="Script" path="res://boat.gd" id="1_7ldt4"]
 [ext_resource type="ArrayMesh" uid="uid://c5wr7egtg4xvo" path="res://assets/boat.obj" id="2_mwobb"]
+[ext_resource type="AudioStream" uid="uid://gje8i2tove6p" path="res://assets/caching.wav" id="3_hegtp"]
+[ext_resource type="AudioStream" uid="uid://bjam2tnaalql2" path="res://assets/win-kaching.mp3" id="4_nnlg0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ad6o0"]
 albedo_color = Color(0.29387, 0.210938, 0.0488153, 1)
@@ -32,5 +34,11 @@ shape = SubResource("BoxShape3D_nv88b")
 
 [node name="EggStart" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.438257, 1.21599, 0)
+
+[node name="Caching" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_hegtp")
+
+[node name="Win-kaching" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_nnlg0")
 
 [connection signal="body_entered" from="catch_area" to="." method="_on_catch_area_body_entered"]

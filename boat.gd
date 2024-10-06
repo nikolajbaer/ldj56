@@ -16,6 +16,9 @@ func _on_catch_area_body_entered(body: Node3D) -> void:
 		egg_collected.emit()
 		if egg_count == FULL:
 			full.emit()
+			$"Win-kaching".play()
+		else:
+			$Caching.play()
 		
 func clear_cargo():
 	for child in get_children():
