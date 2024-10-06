@@ -13,11 +13,13 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	last_vel = abs(linear_velocity.y)
 	if position.y < -3:
+		$"Water-bloop".play()
 		self.queue_free()
 
 func _on_body_entered(body: Node) -> void:
 	#print("Egg hit ",body.name," at ",last_vel)
-
+	if last_vel > 2:
+		$Bounce.play()
 	if body.name == "ground" and last_vel > CRACK_SPEED and not crack_triggered:
 		timer.start()
 		crack_triggered = true

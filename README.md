@@ -6,7 +6,5 @@ TODO Gameplay:
 * creatures chomped on slow down trampoline
 * drop powerup to release creatures?
 
-
-
-
-
+Sound credits:
+* https://freesound.org/people/OwlStorm/sounds/404769/
