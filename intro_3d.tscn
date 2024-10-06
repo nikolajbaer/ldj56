@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://bvnnuxn7bhv6r"]
+[gd_scene load_steps=13 format=3 uid="uid://cw8n5apj1i4i1"]
 
 [ext_resource type="Script" path="res://intro_3d.gd" id="1_adj2y"]
-[ext_resource type="PackedScene" uid="uid://cfllpbprcrwxw" path="res://ground.tscn" id="1_bkpe4"]
+[ext_resource type="PackedScene" path="res://ground.tscn" id="1_bkpe4"]
 [ext_resource type="PackedScene" uid="uid://bjt3arw5lu6dn" path="res://trampoline.tscn" id="2_f5350"]
 [ext_resource type="Shader" path="res://ocean.gdshader" id="3_3saqr"]
 [ext_resource type="PackedScene" uid="uid://br5v1vnwcl18k" path="res://boat.tscn" id="4_4ekjq"]
-[ext_resource type="PackedScene" uid="uid://b2n5w8k25spxt" path="res://dock.tscn" id="5_7mi8w"]
+[ext_resource type="PackedScene" path="res://dock.tscn" id="5_7mi8w"]
+[ext_resource type="Texture2D" uid="uid://cfhf68p4un7sb" path="res://assets/Frame 1(1).png" id="7_efec8"]
 
 [sub_resource type="Environment" id="Environment_5w55g"]
 ambient_light_color = Color(0.958918, 0.937631, 0.741529, 1)
@@ -40,15 +41,6 @@ albedo_color = Color(0.124231, 0.266051, 0.518849, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7uih"]
 albedo_color = Color(0.220134, 0.236158, 0.646493, 1)
-
-[sub_resource type="SystemFont" id="SystemFont_2tj4k"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_cldfp"]
-font = SubResource("SystemFont_2tj4k")
-font_size = 64
-font_color = Color(0.96249, 0.954828, 1.54018e-06, 1)
-outline_size = 12
-outline_color = Color(0, 0, 0, 1)
 
 [node name="intro3d" type="Node3D"]
 script = ExtResource("1_adj2y")
@@ -97,20 +89,27 @@ offset_bottom = 648.0
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Panel" type="VBoxContainer" parent="Control/VBox/CenterContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBox"]
+layout_mode = 2
+
+[node name="Frame1(1)" type="Sprite2D" parent="Control/VBox/VBoxContainer"]
+position = Vector2(607, -198)
+texture = ExtResource("7_efec8")
+
+[node name="CenterContainer" type="CenterContainer" parent="Control/VBox/VBoxContainer"]
+layout_mode = 2
+
+[node name="Panel" type="VBoxContainer" parent="Control/VBox/VBoxContainer/CenterContainer"]
 custom_minimum_size = Vector2(200, 200)
 layout_mode = 2
 
-[node name="RichTextLabel" type="Label" parent="Control/VBox/CenterContainer/Panel"]
-layout_mode = 2
-text = "Egg Harvest"
-label_settings = SubResource("LabelSettings_cldfp")
-horizontal_alignment = 1
-
-[node name="Button" type="Button" parent="Control/VBox/CenterContainer/Panel"]
+[node name="Button" type="Button" parent="Control/VBox/VBoxContainer/CenterContainer/Panel"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 text = "Play Game!"
+
+[node name="Panel" type="Panel" parent="Control/VBox/VBoxContainer/CenterContainer/Panel"]
+layout_mode = 2
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.0

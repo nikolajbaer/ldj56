@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://bjt3arw5lu6dn" path="res://trampoline.tscn" id="1_jhr10"]
 [ext_resource type="Script" path="res://root.gd" id="1_pdsvo"]
-[ext_resource type="PackedScene" uid="uid://cfllpbprcrwxw" path="res://ground.tscn" id="2_et0ms"]
+[ext_resource type="PackedScene" path="res://ground.tscn" id="2_et0ms"]
 [ext_resource type="Shader" path="res://ocean.gdshader" id="4_d3civ"]
 [ext_resource type="PackedScene" uid="uid://br5v1vnwcl18k" path="res://boat.tscn" id="4_wum8f"]
 [ext_resource type="AudioStream" uid="uid://gi75mnvrqww8" path="res://assets/music.ogg" id="6_70vi1"]
-[ext_resource type="PackedScene" uid="uid://b2n5w8k25spxt" path="res://dock.tscn" id="6_eexqw"]
+[ext_resource type="PackedScene" path="res://dock.tscn" id="6_eexqw"]
 
 [sub_resource type="Environment" id="Environment_v7ao4"]
 ambient_light_color = Color(0.958918, 0.937631, 0.741529, 1)
