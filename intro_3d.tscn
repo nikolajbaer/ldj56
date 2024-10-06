@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://cw8n5apj1i4i1"]
 
 [ext_resource type="Script" path="res://intro_3d.gd" id="1_adj2y"]
-[ext_resource type="PackedScene" path="res://ground.tscn" id="1_bkpe4"]
+[ext_resource type="PackedScene" uid="uid://cfllpbprcrwxw" path="res://ground.tscn" id="1_bkpe4"]
 [ext_resource type="PackedScene" uid="uid://bjt3arw5lu6dn" path="res://trampoline.tscn" id="2_f5350"]
 [ext_resource type="Shader" path="res://ocean.gdshader" id="3_3saqr"]
 [ext_resource type="PackedScene" uid="uid://br5v1vnwcl18k" path="res://boat.tscn" id="4_4ekjq"]
-[ext_resource type="PackedScene" path="res://dock.tscn" id="5_7mi8w"]
+[ext_resource type="PackedScene" uid="uid://b2n5w8k25spxt" path="res://dock.tscn" id="5_7mi8w"]
 [ext_resource type="Texture2D" uid="uid://cfhf68p4un7sb" path="res://assets/Frame 1(1).png" id="7_efec8"]
 
 [sub_resource type="Environment" id="Environment_5w55g"]
